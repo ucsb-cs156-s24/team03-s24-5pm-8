@@ -1,6 +1,6 @@
-import React from "react";
-import RecommendationRequestForm from "main/components/RecommendationRequest/RecommendationRequestForm";
-import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
+import React from 'react';
+import RecommendationRequestForm from 'main/components/RecommendationRequest/RecommendationRequestForm';
+import { recommendationRequestFixtures } from 'fixtures/recommendationRequestFixtures';
 
 export default {
     title: 'components/RecommendationRequest/RecommendationRequestForm',
@@ -14,6 +14,7 @@ const Template = (args) => {
 }
 
 export const Create = Template.bind({});
+
 Create.args = {
     buttonLabel: "Create",
     submitAction: (data) => {
