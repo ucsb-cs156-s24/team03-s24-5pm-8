@@ -1,13 +1,13 @@
 const ucsbOrganizationFixtures = {
     oneOrganization: 
-    [
+    
         {
         "orgCode": "SPE",
         "orgTranslationShort": "SigEp",
         "orgTranslation": "Sigma Phi Epsilon",
         "inactive": "false"
         }
-    ],
+    ,
 
     threeOrganizations:
     [

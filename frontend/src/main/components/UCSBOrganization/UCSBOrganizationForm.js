@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
-    
     // Stryker disable all
     const {
         register,
@@ -46,8 +45,8 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     {...register("orgTranslationShort", {
                         required: "orgTranslationShort is required.",
                         maxLength : {
-                            value: 20,
-                            message: "Max length 20 characters"
+                            value: 50,
+                            message: "Max length 50 characters"
                         }
                     })}
                 />
@@ -66,8 +65,8 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     {...register("orgTranslation", {
                         required: "orgTranslation is required.",
                         maxLength : {
-                            value: 20,
-                            message: "Max length 20 characters"
+                            value: 100,
+                            message: "Max length 100 characters"
                         }
                     })}
                 />
@@ -85,10 +84,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     isInvalid={Boolean(errors.inactive)}
                     {...register("inactive", {
                         required: "inactive is required.",
-                        maxLength : {
-                            value: 5,
-                            message: "Max length 5 characters"
-                        }
+                        validate: value => value.toLowerCase() === "true" || value.toLowerCase() === "false" || "Must be true or false"
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
