@@ -42,10 +42,6 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     isInvalid={Boolean(errors.orgTranslationShort)}
                     {...register("orgTranslationShort", {
                         required: "orgTranslationShort is required.",
-                        maxLength : {
-                            value: 50,
-                            message: "Max length 50 characters"
-                        }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -62,10 +58,6 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                     isInvalid={Boolean(errors.orgTranslation)}
                     {...register("orgTranslation", {
                         required: "orgTranslation is required.",
-                        maxLength : {
-                            value: 100,
-                            message: "Max length 100 characters"
-                        }
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -97,7 +89,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                 {buttonLabel}
             </Button>
             <Button
-                variant="secondary"
+                variant="Secondary"
                 onClick={() => navigate(-1)}
                 data-testid={testIdPrefix + "-cancel"}
             >
