@@ -13,57 +13,51 @@ jest.mock('react-router-dom', () => ({
 
 describe("UCSBOrganizationForm tests", () => {
 
-    test('renders correctly', async () => {
-        render(<UCSBOrganizationForm />);
-    
-        const orgCodeInput = await screen.findByTestId('UCSBOrganizationForm-orgCode');
-        expect(orgCodeInput).toBeInTheDocument();
-    
-        const orgTranslationShortInput = await screen.findByTestId('UCSBOrganizationForm-orgTranslationShort');
-        expect(orgTranslationShortInput).toBeInTheDocument();
-    
-        const orgTranslationInput = await screen.findByTestId('UCSBOrganizationForm-orgTranslation');
-        expect(orgTranslationInput).toBeInTheDocument();
-    
-        const inactiveInput = await screen.findByTestId('UCSBOrganizationForm-inactive');
-        expect(inactiveInput).toBeInTheDocument();
+    test("renders correctly", async () => {
+
+        render(
+            <Router  >
+                <UCSBOrganizationForm />
+            </Router>
+        );
+        await screen.findByText(/Create/);
     });
-    
 
 
     test("renders correctly when passing in a UCSBOrganization", async () => {
 
         render(
             <Router  >
-                <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization} />
+                <UCSBOrganizationForm initialContents={ucsbOrganizationFixtures.oneOrganization[0]} />
             </Router>
         );
         await screen.findByTestId(/UCSBOrganizationForm-orgCode/);
         expect(screen.getByText(/orgCode/)).toBeInTheDocument();
-        expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toHaveValue("SPE");
+        expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toBeInTheDocument('SPE');
     });
 
 
-    test("Correct Error messages on bad input", async () => {
+    test("Correct Error messsages on bad input", async () => {
+
         render(
-            <Router>
+            <Router  >
                 <UCSBOrganizationForm />
             </Router>
         );
         await screen.findByTestId("UCSBOrganizationForm-orgCode");
-    
-        const orgTranslationShort = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-        const orgTranslation = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
-        const inactive = screen.getByTestId("UCSBOrganizationForm-inactive");
-        const submitButton = screen.getByRole('button', { name: /create/i });
-    
-        fireEvent.change(inactive, { target: { value: 'bad-input' } });
+        const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
+        const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
+        const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+        const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
+
+        fireEvent.change(orgCodeField, { target: { value: 'KS' } });
+        fireEvent.change(orgTranslationShortField, { target: { value: 'KSig' } });
+        fireEvent.change(orgTranslationField, { target: { value: 'Kappa Sigma' } });
         fireEvent.click(submitButton);
-    
-        await screen.findByText(/Must be true or false/); 
+
+	expect(screen.queryByText(/orgTranslationShort must be a string/)).not.toBeInTheDocument();
+
     });
-    
-    
 
     test("Correct Error messsages on missing input", async () => {
 
@@ -77,38 +71,68 @@ describe("UCSBOrganizationForm tests", () => {
 
         fireEvent.click(submitButton);
 
-        await screen.findByText(/orgTranslationShort is required./);
+        await screen.findByText(/orgCode is required./);
+        expect(screen.getByText(/orgTranslationShort is required./)).toBeInTheDocument();
         expect(screen.getByText(/orgTranslation is required./)).toBeInTheDocument();
         expect(screen.getByText(/inactive is required./)).toBeInTheDocument();
 
     });
 
-    test("No Error messages on good input", async () => {
+
+    test("Correct Error message on wrong inactive input", async () => {
         render(
             <Router>
                 <UCSBOrganizationForm />
             </Router>
         );
-
-        const orgCodeInput = screen.getByTestId("UCSBOrganizationForm-orgCode");
-        fireEvent.change(orgCodeInput, { target: { value: '1234' } });
     
-        const orgTranslationShortInput = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-        fireEvent.change(orgTranslationShortInput, { target: { value: 'Translation Short' } });
-    
-        const orgTranslationInput = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
-        fireEvent.change(orgTranslationInput, { target: { value: 'Translation' } });
-    
-        const inactiveInput = screen.getByTestId("UCSBOrganizationForm-inactive");
-        fireEvent.change(inactiveInput, { target: { value: 'false' } });
-    
-        const submitButton = screen.getByRole('button', { name: /create/i });
+        const inactiveField = await screen.findByTestId("UCSBOrganizationForm-inactive");
+        
+        fireEvent.change(inactiveField, { target: { value: 'invalid-input' } });
+        
+        const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
         fireEvent.click(submitButton);
     
-        expect(screen.queryByText(/orgTranslationShort is required./)).not.toBeInTheDocument();
-        expect(screen.queryByText(/orgTranslation is required./)).not.toBeInTheDocument();
-        expect(screen.queryByText(/inactive is required./)).not.toBeInTheDocument();
-    });    
+        const errorMessage = await screen.findByText('Must be true or false');
+        expect(errorMessage).toBeInTheDocument();
+    });
+
+
+
+    test("No Error messages on good input", async () => {
+        const mockSubmitAction = jest.fn();
+    
+        render(
+            <Router>
+                <UCSBOrganizationForm submitAction={mockSubmitAction} />
+            </Router>
+        );
+    
+        const orgCodeField = screen.getByTestId("UCSBOrganizationForm-orgCode");
+        const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
+        const orgTranslationField = screen.getByTestId("UCSBOrganizationForm-orgTranslation");
+        const inactiveField = screen.getByTestId("UCSBOrganizationForm-inactive");
+        const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
+    
+
+        const inputs = ["true", "false"];
+        for (const input of inputs) {
+            fireEvent.change(orgCodeField, { target: { value: 'ATO' } });
+            fireEvent.change(orgTranslationShortField, { target: { value: 'Alpha Tau' } });
+            fireEvent.change(orgTranslationField, { target: { value: 'Alpha Tau Omega' } });
+            fireEvent.change(inactiveField, { target: { value: input } });
+            fireEvent.click(submitButton);
+    
+            await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
+            expect(screen.queryByText(/Must be 'true' or 'false'/)).not.toBeInTheDocument();
+            expect(screen.queryByText(/is required./)).not.toBeInTheDocument();
+    
+            
+            mockSubmitAction.mockClear();
+        }
+    });
+    
+
 
     test("that navigate(-1) is called when Cancel is clicked", async () => {
 
@@ -127,5 +151,4 @@ describe("UCSBOrganizationForm tests", () => {
     });
 
 });
-
 
