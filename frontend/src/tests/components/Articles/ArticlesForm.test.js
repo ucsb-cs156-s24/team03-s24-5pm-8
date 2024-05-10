@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import ArticleForm from "main/components/Articles/ArticleForm";
-import { articleFixtures } from "fixtures/articleFixtures";
+import ArticlesForm from "main/components/Articles/ArticlesForm";
+import { articlesFixtures } from "fixtures/articlesFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const mockedNavigate = jest.fn();
@@ -11,13 +11,13 @@ jest.mock('react-router-dom', () => ({
 }));
 
 
-describe("ArticleForm tests", () => {
+describe("ArticlesForm tests", () => {
 
     test("renders correctly", async () => {
 
         render(
             <Router  >
-                <ArticleForm />
+                <ArticlesForm />
             </Router>
         );
         // await screen.findByText(/Id/);
@@ -29,12 +29,12 @@ describe("ArticleForm tests", () => {
 
         render(
             <Router  >
-                <ArticleForm initialContents={articleFixtures.oneArticle[0]} />
+                <ArticlesForm initialContents={articlesFixtures.oneArticle[0]} />
             </Router>
         );
-        await screen.findByTestId(/ArticleForm-id/);
+        await screen.findByTestId(/ArticlesForm-id/);
         expect(screen.getByText(/Id/)).toBeInTheDocument();
-        expect(screen.getByTestId(/ArticleForm-id/)).toHaveValue("1");
+        expect(screen.getByTestId(/ArticlesForm-id/)).toHaveValue("1");
     });
 
 
@@ -42,18 +42,18 @@ describe("ArticleForm tests", () => {
 
         render(
             <Router  >
-                <ArticleForm />
+                <ArticlesForm />
             </Router>
         );
-        await screen.findByTestId("ArticleForm-title");
-        const titleField = screen.getByTestId("ArticleForm-title");
-        const explanationField = screen.getByTestId("ArticleForm-explanation");
-        const dateAddedField = screen.getByTestId("ArticleForm-dateAdded");
-        const submitButton = screen.getByTestId("ArticleForm-submit");
+        await screen.findByTestId("ArticlesForm-title");
+        const titleField = screen.getByTestId("ArticlesForm-title");
+        const explanationField = screen.getByTestId("ArticlesForm-explanation");
+        const dateAddedField = screen.getByTestId("ArticlesForm-dateAdded");
+        const submitButton = screen.getByTestId("ArticlesForm-submit");
 
         fireEvent.change(titleField, { target: { value: 'morethanthirtycharactersforthetitlecausesanerrorjustlikethis' } });
         fireEvent.change(explanationField, { target: { value: '00afjeadfkijaoweijfoiwaejfaiojfaoifjdkfjadkfjfkdjajdslkfjakdfjifjknfvfghfjkdfjhgjfkdfjhgjfkdfjghjfkfjghjfkjghjfkjghjfkjghjfkjghjfkjghjfkjgjfkjgfkjghjfkfjkfjgfkfjgjfkjgjfkfjkfjgjfkfjghjfkdfjjkfjjkfjjkawjfakwefgjdhbcvhjfgegfjhdjshdjshdjshdjshdjshdjsdhjshdjshdjshdjshdjshdjshdjshdjshdjshdjshdjshdjshdjhsjdjshdjshdjshdjshdjssjdhsjdhjsdhdjshdjshdjshjsdhjshdjshdjshdjhdjshdjshdjshfdjfhakwefhsjdfhajkfhkajdfhalkjdfhkdjfhkjsdhfkjsdhfsjfhkjdshfksjdhfksjdhfksjdfhksjdhfskjdfkhfskdjfhksjdhfksjdhfksjdfhskjfhskjdhfskjdfhdksjfhskjdfhdksjhfskjdhfdskjhfjdsf' } });
-        fireEvent.change(dateAdded, { target: { value: "bad-input" } });
+        fireEvent.change(dateAddedField, { target: { value: "bad-input" } });
         fireEvent.click(submitButton);
 
         await screen.findByText(/Max length 30 characters/);
@@ -64,11 +64,11 @@ describe("ArticleForm tests", () => {
 
         render(
             <Router  >
-                <ArticleForm />
+                <ArticlesForm />
             </Router>
         );
-        await screen.findByTestId("ArticleForm-submit");
-        const submitButton = screen.getByTestId("ArticleForm-submit");
+        await screen.findByTestId("ArticlesForm-submit");
+        const submitButton = screen.getByTestId("ArticlesForm-submit");
 
         fireEvent.click(submitButton);
 
@@ -85,17 +85,17 @@ describe("ArticleForm tests", () => {
 
         render(
             <Router  >
-                <ArticleForm submitAction={mockSubmitAction} />
+                <ArticlesForm submitAction={mockSubmitAction} />
             </Router>
         );
-        await screen.findByTestId("ArticleForm-email");
-        const emailField = screen.getByTestId("ArticleForm-email");
-        const titleField = screen.getByTestId("ArticleForm-title");
-        const urlField = screen.getByTestId("ArticleForm-url");
-        const explanationField = screen.getByTestId("ArticleForm-explanation");
-        const dateAddedField = screen.getByTestId("ArticleForm-dateAdded");
+        await screen.findByTestId("ArticlesForm-email");
+        const emailField = screen.getByTestId("ArticlesForm-email");
+        const titleField = screen.getByTestId("ArticlesForm-title");
+        const urlField = screen.getByTestId("ArticlesForm-url");
+        const explanationField = screen.getByTestId("ArticlesForm-explanation");
+        const dateAddedField = screen.getByTestId("ArticlesForm-dateAdded");
 
-        const submitButton = screen.getByTestId("ArticleForm-submit");
+        const submitButton = screen.getByTestId("ArticlesForm-submit");
 
         fireEvent.change(dateAddedField, { target: { value: "2022-01-02T12:00" } });
         fireEvent.change(titleField, { target: { value: "Computer Science" } });
@@ -121,11 +121,11 @@ describe("ArticleForm tests", () => {
 
         render(
             <Router  >
-                <ArticleForm />
+                <ArticlesForm />
             </Router>
         );
-        await screen.findByTestId("ArticleForm-cancel");
-        const cancelButton = screen.getByTestId("ArticleForm-cancel");
+        await screen.findByTestId("ArticlesForm-cancel");
+        const cancelButton = screen.getByTestId("ArticlesForm-cancel");
 
         fireEvent.click(cancelButton);
 

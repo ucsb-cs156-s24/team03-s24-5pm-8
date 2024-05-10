@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 
-function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
     
     // Stryker disable all
@@ -22,7 +22,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
    
     const navigate = useNavigate();
 
-    const testIdPrefix = "ArticleForm";
+    const testIdPrefix = "ArticlesForm";
 
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -32,7 +32,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                         <Form.Group className="mb-3" >
                             <Form.Label htmlFor="id">Id</Form.Label>
                             <Form.Control
-                                data-testid="ArticleForm-id"
+                                data-testid="ArticlesForm-id"
                                 id="id"
                                 type="text"
                                 {...register("id")}
@@ -48,7 +48,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="dateAdded">Date Added(iso format)</Form.Label>
                     <Form.Control
-                        data-testid="ArticleForm-dateAdded"
+                        data-testid="ArticlesForm-dateAdded"
                         id="dateAdded"
                         type="datetime-local"
                         isInvalid={Boolean(errors.dateAdded)}
@@ -64,7 +64,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="title">Title</Form.Label>
                     <Form.Control
-                        data-testid="ArticleForm-title"
+                        data-testid="ArticlesForm-title"
                         id="title"
                         type="text"
                         isInvalid={Boolean(errors.title)}
@@ -88,7 +88,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="url">Url</Form.Label>
                     <Form.Control
-                        data-testid="ArticleForm-url"
+                        data-testid="ArticlesForm-url"
                         id="url"
                         type="text"
                         isInvalid={Boolean(errors.url)}
@@ -106,7 +106,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                 <Form.Group className="mb-3" >
                     <Form.Label htmlFor="explanation">Explanation</Form.Label>
                     <Form.Control
-                        data-testid="ArticleForm-explanation"
+                        data-testid="ArticlesForm-explanation"
                         id="explanation"
                         type="text"
                         isInvalid={Boolean(errors.explanation)}
@@ -129,7 +129,7 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="email">Email</Form.Label>
                 <Form.Control
-                    data-testid="ArticleForm-email"
+                    data-testid="ArticlesForm-email"
                     id="email"
                     type="text"
                     isInvalid={Boolean(errors.email)}
@@ -163,4 +163,4 @@ function ArticleForm({ initialContents, submitAction, buttonLabel = "Create" }) 
     )
 }
 
-export default ArticleForm;
+export default ArticlesForm;
