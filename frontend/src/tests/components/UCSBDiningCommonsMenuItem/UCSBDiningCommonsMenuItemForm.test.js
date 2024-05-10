@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("UCSBDiningCommonsMenuItemForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["Dining Commons Code", "Name", "Station"];
+    const expectedHeaders = ["Name", "Dining Commons Code", "Station"];
     const testId = "UCSBDiningCommonsMenuItemForm";
 
     test("renders correctly with no initialContents", async () => {
@@ -41,7 +41,7 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <Router>
-                    <UCSBDiningCommonsMenuItemForm initialContents={ucsbDiningCommonsMenuItemFixtures.oneMenuItem} />
+                    <UCSBDiningCommonsMenuItemForm initialContents={ucsbDiningCommonsMenuItemFixtures.oneDiningCommonsMenuItem} />
                 </Router>
             </QueryClientProvider>
         );
@@ -84,20 +84,15 @@ describe("UCSBDiningCommonsMenuItemForm tests", () => {
         );
 
         expect(await screen.findByText(/Create/)).toBeInTheDocument();
-        const submitButton = screen.getByText(/Create/);
+        const submitButton = screen.getByTestId(`${testId}-submit`);
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Dining Commons Code is required/);
-        expect(screen.getByText(/Name is required/)).toBeInTheDocument();
+        const _nameInput = screen.getByTestId(`${testId}-name`);
+        const _diningCommonsCodeInput = screen.getByTestId(`${testId}-diningCommonsCode`);
+        const _stationInput = screen.getByTestId(`${testId}-station`);
+        await screen.findByText(/Name is required/);
+        expect(screen.getByText(/Dining Commons Code is required/)).toBeInTheDocument();
         expect(screen.getByText(/Station is required/)).toBeInTheDocument();
-
-        const nameInput = screen.getByTestId(`${testId}-name`);
-        fireEvent.change(nameInput, { target: { value: "a".repeat(31) } });
-        fireEvent.click(submitButton);
-
-        await waitFor(() => {
-            expect(screen.getByText(/Max length 30 characters/)).toBeInTheDocument();
-        });
     });
 
 });
