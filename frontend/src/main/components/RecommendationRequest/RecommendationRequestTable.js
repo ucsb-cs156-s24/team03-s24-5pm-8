@@ -26,7 +26,7 @@ export default function RecommendationRequestTable({ recommendationRequests, cur
 
     // Stryker disable next-line all
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
-
+    
     const columns = [
         {
             Header: 'id',

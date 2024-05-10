@@ -4,6 +4,7 @@ import RecommendationRequestTable from "main/components/RecommendationRequest/Re
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
+import { hasRole } from "main/utils/currentUser";
 
 const mockedNavigate = jest.fn();
 
@@ -96,7 +97,7 @@ describe("RecommendationRequestTable tests", () => {
 
     });
 
-    test("Edit button navigates to the edit page for admin user", async () => {
+    test("Edit button navigates to the edit page for admin user + delete button", async () => {
 
         const currentUser = currentUserFixtures.adminUser;
 
@@ -109,9 +110,40 @@ describe("RecommendationRequestTable tests", () => {
 
         );
 
+        const deleteButton = screen.getByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button");
+        fireEvent.click(deleteButton);
+
+
         const editButton = screen.getByTestId("RecommendationRequestTable-cell-row-0-col-Edit-button");
         fireEvent.click(editButton);
 
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith("/recommendationRequests/edit/1"));
     });
+
+    test("Fill table with no data", () => {
+            
+            const currentUser = currentUserFixtures.adminUser;
+    
+            render(
+                <QueryClientProvider client={queryClient}>
+                    <MemoryRouter>
+                        <RecommendationRequestTable recommendationRequests={[]} currentUser={currentUser} />
+                    </MemoryRouter>
+                </QueryClientProvider>
+    
+            );
+    
+            const expectedHeaders = ["id", "Requester email", "Professor email", "Explnation", "Date Requested", "Date Needed", "Done"];
+            const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done"];
+            const testid = "RecommendationRequestTable";
+    
+            expectedHeaders.forEach((headerText) => {
+                const header = screen.getByText(headerText);
+                expect(header).toBeInTheDocument();
+            });
+
+    
+            expect(screen.queryByTestId(`${testid}-cell-row-0-col-id`)).not.toBeInTheDocument();
+        });
+
 }); 
