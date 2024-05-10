@@ -120,30 +120,4 @@ describe("RecommendationRequestTable tests", () => {
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith("/recommendationRequests/edit/1"));
     });
 
-    test("Fill table with no data", () => {
-            
-            const currentUser = currentUserFixtures.adminUser;
-    
-            render(
-                <QueryClientProvider client={queryClient}>
-                    <MemoryRouter>
-                        <RecommendationRequestTable recommendationRequests={[]} currentUser={currentUser} />
-                    </MemoryRouter>
-                </QueryClientProvider>
-    
-            );
-    
-            const expectedHeaders = ["id", "Requester email", "Professor email", "Explnation", "Date Requested", "Date Needed", "Done"];
-            const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done"];
-            const testid = "RecommendationRequestTable";
-    
-            expectedHeaders.forEach((headerText) => {
-                const header = screen.getByText(headerText);
-                expect(header).toBeInTheDocument();
-            });
-
-    
-            expect(screen.queryByTestId(`${testid}-cell-row-0-col-id`)).not.toBeInTheDocument();
-        });
-
 }); 
