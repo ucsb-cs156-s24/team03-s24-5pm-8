@@ -1,4 +1,4 @@
-const articlesFixtures = {
+const articleFixtures = {
     oneArticle:
     [
       {
@@ -43,4 +43,4 @@ const articlesFixtures = {
     ]
 };
 
-export { articlesFixtures };
+export { articleFixtures };
