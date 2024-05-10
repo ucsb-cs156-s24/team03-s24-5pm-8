@@ -22,7 +22,7 @@ const ucsbDiningCommonsMenuItemFixtures = {
             "id": 2,
             "diningCommonsCode": "DLG",
             "name": "Tofu Banh Mi Sandwich (v)",
-            "station": "Entree Specials"  
+            "station": "Entrees"  
         },
 
         {
