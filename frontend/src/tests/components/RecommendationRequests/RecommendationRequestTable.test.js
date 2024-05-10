@@ -109,11 +109,11 @@ describe("RecommendationRequestTable tests", () => {
 
         );
 
-        test = 0;
+        var testNumber = 0;
         if (hasRole(currentUser, "ROLE_ADMIN")) {
-            test = 1;
+            testNumber = 1;
         }
-        expect(test).toBe(1);
+        expect(testNumber).toBe(1);
 
 
         const deleteButton = screen.getByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button");
