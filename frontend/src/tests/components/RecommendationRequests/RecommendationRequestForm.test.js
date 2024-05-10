@@ -141,4 +141,36 @@ describe('RecommendationRequestForm tests', () => {
             expect(mockedNavigate).toHaveBeenCalledWith(-1);
     });
 
+    test("done regex pattern 1", async () => {
+        render(
+            <Router  >
+                <RecommendationRequestForm />
+            </Router>
+        );
+        await screen.findByTestId('RecommendationRequestForm-done');
+        const doneField = screen.getByTestId('RecommendationRequestForm-done');
+        const submitButton = screen.getByTestId('RecommendationRequestForm-submit');
+
+        fireEvent.change(doneField, { target: { value: 'aTrue' } });
+
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Done must be true or false./);
+    });
+    test("done regex pattern 2", async () => {
+        render(
+            <Router  >
+                <RecommendationRequestForm />
+            </Router>
+        );
+        await screen.findByTestId('RecommendationRequestForm-done');
+        const doneField = screen.getByTestId('RecommendationRequestForm-done');
+        const submitButton = screen.getByTestId('RecommendationRequestForm-submit');
+
+        fireEvent.change(doneField, { target: { value: 'TrueNOT' } });
+
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Done must be true or false./);
+    });
 });
