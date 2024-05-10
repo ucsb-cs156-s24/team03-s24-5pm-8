@@ -93,7 +93,6 @@ describe("RecommendationRequestTable tests", () => {
         expect(deleteButton).toBeInTheDocument();
         expect(deleteButton).toHaveClass("btn btn-danger");
         expect(deleteButton).toHaveTextContent("Delete");
-        //andExpect(status().is(200))
 
     });
 
@@ -109,6 +108,13 @@ describe("RecommendationRequestTable tests", () => {
             </QueryClientProvider>
 
         );
+
+        test = 0;
+        if (hasRole(currentUser, "ROLE_ADMIN")) {
+            test = 1;
+        }
+        expect(test).toBe(1);
+
 
         const deleteButton = screen.getByTestId("RecommendationRequestTable-cell-row-0-col-Delete-button");
         fireEvent.click(deleteButton);
