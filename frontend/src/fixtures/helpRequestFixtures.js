@@ -6,7 +6,7 @@ const helpRequestFixtures = {
         "tableOrBreakoutRoom": "8",
         "requestTime": "2022-01-03T00:00:00",
         "explanation": "Need help with Swagger",
-        "solved": false
+        "solved": true
     },
     threeHelpRequests: [
         {
@@ -25,7 +25,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "10",
             "requestTime": "2023-01-03T12:00:00",
             "explanation": "Dokku problems",
-            "solved": false
+            "solved": true
         },
         {
             "id": 3,
