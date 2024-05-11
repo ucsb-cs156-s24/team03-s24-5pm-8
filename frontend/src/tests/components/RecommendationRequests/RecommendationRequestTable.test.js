@@ -123,7 +123,7 @@ describe("RecommendationRequestTable tests", () => {
         const editButton = screen.getByTestId("RecommendationRequestTable-cell-row-0-col-Edit-button");
         fireEvent.click(editButton);
 
-        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith("/recommendationRequests/edit/1"));
+        await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith("/recommendationrequests/edit/1"));
     });
 
 }); 
