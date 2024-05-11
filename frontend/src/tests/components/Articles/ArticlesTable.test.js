@@ -140,8 +140,8 @@ describe("UserTable tests", () => {
       </QueryClientProvider>
     );
 
-    const expectedHeaders = ["id", "Date Added", "Title", "Url", "Explanation", "Email"];
-    const expectedFields = ["id", "dateAdded", "title", "url", "explanation", "email"];
+    // const expectedHeaders = ["id", "Date Added"];
+    // const expectedFields = ["id", "dateAdded"];
     const testId = "ArticlesTable";
 
     // assert - check that the expected content is rendered
