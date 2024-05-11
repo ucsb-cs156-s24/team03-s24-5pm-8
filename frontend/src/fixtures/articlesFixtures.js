@@ -14,7 +14,7 @@ const articlesFixtures = {
     threeArticles:
     [
         {
-            "id": 2,
+            "id": 1,
             "dateAdded": "2022-02-02T12:00:00",
             "title": "title2",
             "url": "url2",
@@ -23,7 +23,7 @@ const articlesFixtures = {
         },
 
         {
-            "id": 3,
+            "id": 2,
             "dateAdded": "2022-03-02T12:00:00",
             "title": "title3",
             "url": "url3",
@@ -32,7 +32,7 @@ const articlesFixtures = {
         },
 
         {
-            "id": 4,
+            "id": 3,
             "dateAdded": "2022-04-02T12:00:00",  
             "title": "title4",
             "url": "url4",
