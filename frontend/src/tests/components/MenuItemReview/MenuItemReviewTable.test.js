@@ -4,7 +4,6 @@ import MenuItemReviewTable from "main/components/MenuItemReview/MenuItemReviewTa
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
-import { useBackendMutation } from "main/utils/useBackend";
 
 const mockedNavigate = jest.fn();
 
@@ -108,7 +107,7 @@ describe("MenuItemReviewTable tests", () => {
         expect(editButton).toBeInTheDocument();
 
         fireEvent.click(editButton);
-        await waitFor(() => { expect(mockedNavigate).toHaveBeenCalledWith(`/menuItemReviews/edit/1`); });
+        await waitFor(() => { expect(mockedNavigate).toHaveBeenCalledWith(`/MenuItemReview/edit/1`); });
     });
 
     test("Delete button triggers deletion for admin user", async () => {
