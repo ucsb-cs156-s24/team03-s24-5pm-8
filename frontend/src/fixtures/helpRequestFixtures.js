@@ -14,7 +14,7 @@ const helpRequestFixtures = {
             "requesterEmail": "hannaneh@ucsb.edu",
             "teamId": "s24-5pm-8",
             "tableOrBreakoutRoom": "8",
-            "requestTime": "2022-01-02T12:00:00",
+            "requestTime": "2022-01-03T00:00:00",
             "explanation": "Need help with Swagger",
             "solved": false
         },
