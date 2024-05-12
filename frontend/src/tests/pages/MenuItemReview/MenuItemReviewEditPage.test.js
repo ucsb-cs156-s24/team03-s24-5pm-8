@@ -121,7 +121,6 @@ describe("MenuItemReviewEditPage tests", () => {
             const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
             const starsField = screen.getByTestId("MenuItemReviewForm-stars");
             const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
-            const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
             expect(itemIdField).toHaveValue("1");
             expect(reviewerEmailField).toHaveValue("xinyaosong@ucsb.edu");
