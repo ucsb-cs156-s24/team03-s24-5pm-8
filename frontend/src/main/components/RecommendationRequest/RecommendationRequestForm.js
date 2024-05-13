@@ -14,7 +14,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
         );
         // Stryker restore all
         
-        const navigate = useNavigate();
+    const navigate = useNavigate();
     
     return (
 
@@ -43,7 +43,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             data-testid="RecommendationRequestForm-requester_email"
                             id="requester_email"
                             type="email"
-                            isInvalid={Boolean(errors.requesterEmail)}
+                            isInvalid={Boolean(errors.requester_email)}
                             {...register("requester_email", {
                                 required: "Requester email is required",
                             })}
@@ -128,22 +128,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                 <Col>
                     <Form.Group className='mb-3'>
                         <Form.Label htmlFor="done">Done</Form.Label>
-                        <Form.Control
+                        <Form.Check
                             data-testid="RecommendationRequestForm-done"
                             id="done"
-                            type="text"
-                            placeholder="true or false"
-                            isInvalid={Boolean(errors.done)}
-                            {...register("done", {
-                                required: true,
-                                pattern: /^(true|false)$/i,
-                            })}
-                            
+                            value={true}
+                            type="checkbox"
+                            {...register("done")}
                         />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.done && 'Done is required'}
-                            {errors.done?.type === 'pattern' && 'Done must be true or false.'}
-                        </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
