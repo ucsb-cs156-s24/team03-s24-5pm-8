@@ -116,7 +116,7 @@ describe("RecommendationRequestCreatePage tests", () => {
     });
 
 
-    test("when you fill in the form and hit submit, it makes a request to the backend 2 ", async () => {
+    test("when you fill in the form and hit submit, it makes a request to the backend 2", async () => {
 
         const queryClient = new QueryClient();
         const recommendationRequest = {
