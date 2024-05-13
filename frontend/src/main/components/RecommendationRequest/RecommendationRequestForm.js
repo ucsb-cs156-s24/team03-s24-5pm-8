@@ -128,14 +128,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                 <Col>
                     <Form.Group className='mb-3'>
                         <Form.Label htmlFor="done">Done</Form.Label>
-                        <Form.Select 
+                        <Form.Check
                             data-testid="RecommendationRequestForm-done"
                             id="done"
+                            value={true}
+                            type="checkbox"
                             {...register("done")}
-                        >
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </Form.Select>
+                        />
                     </Form.Group>
                 </Col>
             </Row>

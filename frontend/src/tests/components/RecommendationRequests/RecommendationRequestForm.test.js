@@ -38,9 +38,8 @@ describe('RecommendationRequestForm tests', () => {
         expect(screen.getByTestId(/RecommendationRequestForm-explanation/)).toHaveValue('explanationData1');
         expect(screen.getByTestId(/RecommendationRequestForm-date_requested/)).toHaveValue('2022-01-02T12:00');
         expect(screen.getByTestId(/RecommendationRequestForm-date_needed/)).toHaveValue('2022-01-03T12:00');
-        expect(screen.getByTestId(/RecommendationRequestForm-done/)).toHaveValue('true');
+        expect(screen.getByTestId(/RecommendationRequestForm-done/)).toBeChecked();
     });
-
 
     test('Correct Error messsages on bad input', async () => {
             

@@ -50,73 +50,7 @@ describe("RecommendationRequestCreatePage tests", () => {
         );
     });
 
-
-
     test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
-
-        const queryClient = new QueryClient();
-        const recommendationRequest = {
-            id: 17,
-            requester_email: "karsten.lansing@gmail.com",
-            professor_email: "philconrad@gmail.com",
-            explanation: "I need a letter of recommendation for grad school",
-            date_requested: "2022-01-02T00:00",
-            date_needed: "2022-02-02T00:00",
-            done: "false"
-        };
-
-        axiosMock.onPost("/api/recommendationrequests/post").reply(202, recommendationRequest);
-
-        render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <RecommendationRequestCreatePage />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-
-        await waitFor(() => {
-            expect(screen.getByTestId("RecommendationRequestForm-requester_email")).toBeInTheDocument();
-        });
-
-        const requesterEmailField = screen.getByTestId("RecommendationRequestForm-requester_email");
-        const professorEmailField = screen.getByTestId("RecommendationRequestForm-professor_email");
-        const explanationField = screen.getByTestId("RecommendationRequestForm-explanation");
-        const dateRequestedField = screen.getByTestId("RecommendationRequestForm-date_requested");
-        const dateNeededField = screen.getByTestId("RecommendationRequestForm-date_needed");
-        const doneField = screen.getByTestId("RecommendationRequestForm-done");
-        const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
-
-
-        fireEvent.change(requesterEmailField, { target: { value: 'karsten.lansing@gmail.com' } });
-        fireEvent.change(professorEmailField, { target: { value: 'philconrad@gmail.com' } });
-        fireEvent.change(explanationField, { target: { value: 'I need a letter of recommendation for grad school' } });
-        fireEvent.change(dateRequestedField, { target: { value: '2022-01-02T00:00' } });
-        fireEvent.change(dateNeededField, { target: { value: '2022-02-02T00:00' } });
-        fireEvent.change(doneField, { target: { value: 'false' } })
-
-
-        expect(submitButton).toBeInTheDocument();
-        fireEvent.click(submitButton);
-
-        await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
-
-        expect(axiosMock.history.post[0].params).toEqual(
-            {
-                "requester_email": "karsten.lansing@gmail.com",
-                "professor_email": "philconrad@gmail.com",
-                "explanation": "I need a letter of recommendation for grad school",
-                "date_requested": "2022-01-02T00:00",
-                "date_needed": "2022-02-02T00:00",
-                "done": "false"
-            });
-
-        expect(mockToast).toBeCalledWith("Recommendation Request Created - id: 17 requesterEmail: karsten.lansing@gmail.com professorEmail:philconrad@gmail.com explanation: I need a letter of recommendation for grad school done: false");
-        expect(mockNavigate).toBeCalledWith({ "to": "/recommendationrequests" });
-    });
-
-
-    test("when you fill in the form and hit submit, it makes a request to the backend 2 ", async () => {
 
         const queryClient = new QueryClient();
         const recommendationRequest = {
@@ -151,14 +85,12 @@ describe("RecommendationRequestCreatePage tests", () => {
         const doneField = screen.getByTestId("RecommendationRequestForm-done");
         const submitButton = screen.getByTestId("RecommendationRequestForm-submit");
 
-
         fireEvent.change(requesterEmailField, { target: { value: 'karsten.lansing@gmail.com' } });
         fireEvent.change(professorEmailField, { target: { value: 'philconrad@gmail.com' } });
         fireEvent.change(explanationField, { target: { value: 'I need a letter of recommendation for grad school' } });
         fireEvent.change(dateRequestedField, { target: { value: '2022-01-02T00:00' } });
         fireEvent.change(dateNeededField, { target: { value: '2022-02-02T00:00' } });
-        fireEvent.select(doneField, { target: { value: 'true' } })
-
+        fireEvent.click(doneField);
 
         expect(submitButton).toBeInTheDocument();
         fireEvent.click(submitButton);
@@ -177,7 +109,11 @@ describe("RecommendationRequestCreatePage tests", () => {
 
         expect(mockToast).toBeCalledWith("Recommendation Request Created - id: 17 requesterEmail: karsten.lansing@gmail.com professorEmail:philconrad@gmail.com explanation: I need a letter of recommendation for grad school done: true");
         expect(mockNavigate).toBeCalledWith({ "to": "/recommendationrequests" });
+
+        
+            
     });
+
 });
 
 
