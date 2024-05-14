@@ -41,7 +41,7 @@ export default function RecommendationRequestTable({ recommendationRequests, cur
             accessor: "professor_email"
         },
         {
-            Header: "Explnation",
+            Header: "Explanation",
             accessor: "explanation"
         },
         {
@@ -54,7 +54,7 @@ export default function RecommendationRequestTable({ recommendationRequests, cur
         },
         {
             Header: "Done",
-            accessor: "done"
+            accessor: recommendationRequests => recommendationRequests.done.toString()
         }
     ];
 
