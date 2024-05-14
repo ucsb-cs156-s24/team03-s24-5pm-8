@@ -54,10 +54,7 @@ export default function HelpRequestTable({ dates, currentUser }) {
         },
         {
             Header: 'solved',
-            // Stryker disable next-line all : TODO try to make a good test for this
             accessor: 'solved',
-
-            // Stryker disable next-line all : TODO try to make a good test for this
             Cell: ({ cell: { value } }) => (value ? "true" : "false")
         }
     ];
