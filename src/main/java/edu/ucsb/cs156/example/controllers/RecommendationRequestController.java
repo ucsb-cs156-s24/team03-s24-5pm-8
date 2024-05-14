@@ -58,24 +58,24 @@ public class RecommendationRequestController extends ApiController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/post")
     public RecommendationRequest postRecommendationDate(
-            @Parameter(name = "requesterEmail") @RequestParam String requesterEmail,
-            @Parameter(name = "professorEmail") @RequestParam String professorEmail,
+            @Parameter(name = "requester_email") @RequestParam String requester_email,
+            @Parameter(name = "professor_email") @RequestParam String professor_email,
             @Parameter(name = "explanation") @RequestParam String explanation,
-            @Parameter(name = "dateRequested") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
-            @Parameter(name = "dateNeeded") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
+            @Parameter(name = "date_requested") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date_requested,
+            @Parameter(name = "date_needed") @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date_needed,
             @Parameter(name = "done") @RequestParam boolean done)  
             
             throws JsonProcessingException {
         RecommendationRequest requestToPost = new RecommendationRequest();
         
-        log.info("dateRequested:", dateRequested);
-        log.info("dateNeeded:", dateNeeded);
+        log.info("date_requested:", date_requested);
+        log.info("date_needed:", date_needed);
 
-        requestToPost.setRequesterEmail(requesterEmail);
-        requestToPost.setProfessorEmail(professorEmail);
+        requestToPost.setRequester_email(requester_email);
+        requestToPost.setProfessor_email(professor_email);
         requestToPost.setExplanation(explanation);
-        requestToPost.setDateRequested(dateRequested);
-        requestToPost.setDateNeeded(dateNeeded);
+        requestToPost.setDate_requested(date_requested);
+        requestToPost.setDate_needed(date_needed);
         requestToPost.setDone(done);
 
 
@@ -103,11 +103,11 @@ public class RecommendationRequestController extends ApiController {
         RecommendationRequest recommendationRequest = recommendationRequestRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(RecommendationRequest.class, id));
 
-        recommendationRequest.setRequesterEmail(incoming.getRequesterEmail());
-        recommendationRequest.setProfessorEmail(incoming.getProfessorEmail());
+        recommendationRequest.setRequester_email(incoming.getRequester_email());
+        recommendationRequest.setProfessor_email(incoming.getProfessor_email());
         recommendationRequest.setExplanation(incoming.getExplanation());
-        recommendationRequest.setDateRequested(incoming.getDateRequested());
-        recommendationRequest.setDateNeeded(incoming.getDateNeeded());
+        recommendationRequest.setDate_requested(incoming.getDate_requested());
+        recommendationRequest.setDate_needed(incoming.getDate_needed());
         recommendationRequest.setDone(incoming.getDone());
 
         recommendationRequestRepository.save(recommendationRequest);

@@ -74,20 +74,20 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(0);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedNeeded);
-        expected.setDateNeeded(expectedRequested);
+        expected.setDate_requested(expectedNeeded);
+        expected.setDate_needed(expectedRequested);
         expected.setDone(false);
 
         RecommendationRequest expected2 = new RecommendationRequest();
         expected2.setId(1);
-        expected2.setRequesterEmail("requesterEmail2");
-        expected2.setProfessorEmail("professorEmail2");
+        expected2.setRequester_email("requester_email2");
+        expected2.setProfessor_email("professor_email2");
         expected2.setExplanation("explanation2");
-        expected2.setDateRequested(expectedNeeded2);
-        expected2.setDateNeeded(expectedRequested2);
+        expected2.setDate_requested(expectedNeeded2);
+        expected2.setDate_needed(expectedRequested2);
         expected2.setDone(true);
 
         ArrayList<RecommendationRequest> expectedRecommendations = new ArrayList<>();
@@ -137,11 +137,11 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(3L);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedNeeded);
-        expected.setDateNeeded(expectedRequested);
+        expected.setDate_requested(expectedNeeded);
+        expected.setDate_needed(expectedRequested);
         expected.setDone(true);
 
         when(recommendationRequestRepository.findById(3L)).thenReturn(Optional.of(expected));
@@ -167,11 +167,11 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(2L);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedNeeded);
-        expected.setDateNeeded(expectedRequested);
+        expected.setDate_requested(expectedNeeded);
+        expected.setDate_needed(expectedRequested);
         expected.setDone(true);
 
         when(recommendationRequestRepository.findById(2L)).thenReturn(Optional.of(expected));
@@ -225,11 +225,11 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(3L);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedNeeded);
-        expected.setDateNeeded(expectedRequested);
+        expected.setDate_requested(expectedNeeded);
+        expected.setDate_needed(expectedRequested);
         expected.setDone(true);
 
         when(recommendationRequestRepository.findById(3L)).thenReturn(Optional.of(expected));
@@ -269,17 +269,17 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(0);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedRequested);
-        expected.setDateNeeded(expectedNeeded);
+        expected.setDate_requested(expectedRequested);
+        expected.setDate_needed(expectedNeeded);
         expected.setDone(true);
 
         when(recommendationRequestRepository.save(eq(expected))).thenReturn(expected);
 
         // act
-        MvcResult response = mockMvc.perform(post("/api/recommendationrequests/post?requesterEmail=requesterEmail&professorEmail=professorEmail&explanation=explanation&dateRequested=2024-04-26T08:08:00&dateNeeded=2024-04-27T08:08:00&done=true").with(csrf())).andExpect(status().is(200)).andReturn();
+        MvcResult response = mockMvc.perform(post("/api/recommendationrequests/post?requester_email=requester_email&professor_email=professor_email&explanation=explanation&date_requested=2024-04-26T08:08:00&date_needed=2024-04-27T08:08:00&done=true").with(csrf())).andExpect(status().is(200)).andReturn();
 
         // assert2
         verify(recommendationRequestRepository, times(1)).save(eq(expected));
@@ -310,15 +310,15 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
         LocalDateTime expectedRequested = LocalDateTime.parse("2024-04-26T08:08:00");
         LocalDateTime expectedNeeded = LocalDateTime.parse("2024-04-27T08:08:00");
 
-        RecommendationRequest expected = RecommendationRequest.builder().id(8L).requesterEmail("requesterEmail")
-                .professorEmail("professorEmail").explanation("explanation").dateRequested(expectedRequested)
-                .dateNeeded(expectedNeeded).done(true).build();
+        RecommendationRequest expected = RecommendationRequest.builder().id(8L).requester_email("requester_email")
+                .professor_email("professor_email").explanation("explanation").date_requested(expectedRequested)
+                .date_needed(expectedNeeded).done(true).build();
 
 
 
         String outgoingBody = mapper.writeValueAsString(expected);
         when(recommendationRequestRepository.findById(8L)).thenReturn(Optional.of(expected));
-        String toBeExpected = "RecommendationRequest(id=8, requesterEmail=requesterEmail, professorEmail=professorEmail, explanation=explanation, dateRequested=2024-04-26T08:08, dateNeeded=2024-04-27T08:08, done=true)";
+        String toBeExpected = "RecommendationRequest(id=8, requester_email=requester_email, professor_email=professor_email, explanation=explanation, date_requested=2024-04-26T08:08, date_needed=2024-04-27T08:08, done=true)";
         // act, perform put with new values, info is in the body not the url"
         assertEquals(expected.toString(), toBeExpected);
         MvcResult result = mockMvc.perform(put("/api/recommendationrequests?id=6")
@@ -343,20 +343,20 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         RecommendationRequest expected = new RecommendationRequest();
         expected.setId(4L);
-        expected.setRequesterEmail("requesterEmail");
-        expected.setProfessorEmail("professorEmail");
+        expected.setRequester_email("requester_email");
+        expected.setProfessor_email("professor_email");
         expected.setExplanation("explanation");
-        expected.setDateRequested(expectedRequested);
-        expected.setDateNeeded(expectedNeeded);
+        expected.setDate_requested(expectedRequested);
+        expected.setDate_needed(expectedNeeded);
         expected.setDone(true);
 
         RecommendationRequest expected2 = new RecommendationRequest();
         expected2.setId(4L);
-        expected2.setRequesterEmail("requesterEmail2");
-        expected2.setProfessorEmail("professorEmail2");
+        expected2.setRequester_email("requester_email2");
+        expected2.setProfessor_email("professor_email2");
         expected2.setExplanation("explanation2");
-        expected2.setDateRequested(expectedRequested2);
-        expected2.setDateNeeded(expectedNeeded2);
+        expected2.setDate_requested(expectedRequested2);
+        expected2.setDate_needed(expectedNeeded2);
         expected2.setDone(false);
 
  
@@ -365,7 +365,7 @@ public class RecommendationRequestControllerTests extends ControllerTestCase {
 
         when(recommendationRequestRepository.findById(4L)).thenReturn(Optional.of(expected));
         when(recommendationRequestRepository.save(eq(expected))).thenReturn(expected);
-        String expectedclass = "RecommendationRequest(id=4, requesterEmail=requesterEmail, professorEmail=professorEmail, explanation=explanation, dateRequested=2024-04-26T08:08, dateNeeded=2024-04-27T08:08, done=true)";
+        String expectedclass = "RecommendationRequest(id=4, requester_email=requester_email, professor_email=professor_email, explanation=explanation, date_requested=2024-04-26T08:08, date_needed=2024-04-27T08:08, done=true)";
         assertEquals(expected.toString(), expectedclass);
 
         when(recommendationRequestRepository.findById(4L)).thenReturn(Optional.of(expected));
