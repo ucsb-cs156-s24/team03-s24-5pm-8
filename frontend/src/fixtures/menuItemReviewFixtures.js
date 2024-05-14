@@ -20,7 +20,7 @@ const menuItemReviewFixtures = {
         {
             "id": 2,
             "itemId": 2,
-            "reviewerEmail": "@hannaneh@ucsb.edu",
+            "reviewerEmail": "avosgueritchian@ucsb.edu",
             "stars": 5,
             "dateReviewed": "2022-04-02T12:00:00",
             "comments": "Amazing, please go and try."
