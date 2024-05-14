@@ -54,8 +54,7 @@ export default function RecommendationRequestTable({ recommendationRequests, cur
         },
         {
             Header: "Done",
-            accessor: "done",
-            //Cell: ({ cell }) => cell.value ? "true" : "false"
+            accessor: recommendationRequests => recommendationRequests.done.toString()
         }
     ];
 

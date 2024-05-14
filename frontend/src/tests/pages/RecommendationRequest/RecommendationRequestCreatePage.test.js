@@ -178,4 +178,33 @@ describe("RecommendationRequestCreatePage tests", () => {
         expect(mockToast).toBeCalledWith("Recommendation Request Created - id: 17 requesterEmail: karsten.lansing@gmail.com professorEmail:philconrad@gmail.com explanation: I need a letter of recommendation for grad school done: true");
         expect(mockNavigate).toBeCalledWith({ "to": "/recommendationrequests" });
     });
+
+    test("when you fill in the form and hit submit, it makes a request to the backend with false", async () => {
+
+        const queryClient = new QueryClient();
+        const recommendationRequest = {
+            id: 17,
+            requester_email: "asd@gmail.com",
+            professor_email: "asdasd@gmail.com",
+            explanation: "asdasd",
+            date_requested: "2022-01-02T00:00",
+            date_needed: "2022-02-02T00:00",
+            done: "false"
+        };
+
+        axiosMock.onPost("/api/recommendationrequests/post").reply(202, recommendationRequest);
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationRequestCreatePage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => {
+            expect(screen.getByTestId("RecommendationRequestForm-requester_email")).toBeInTheDocument();
+        });
+
+    });
 });

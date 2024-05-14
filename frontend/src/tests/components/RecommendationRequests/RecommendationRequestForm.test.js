@@ -108,7 +108,7 @@ describe('RecommendationRequestForm tests', () => {
         fireEvent.change(explanationField, { target: { value: 'test explanation' } });
         fireEvent.change(date_requestedField, { target: { value: '2022-01-01T12:00' } });
         fireEvent.change(date_neededField, { target: { value: '2022-01-02T12:00' } });
-        fireEvent.change(doneField, { target: { value: 'true' } });
+        fireEvent.change(doneField, { target: { value: 'false' } });
         fireEvent.click(submitButton);
 
         await waitFor(() => expect(submitAction).toHaveBeenCalled());

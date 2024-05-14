@@ -30,7 +30,7 @@ describe("RecommendationRequestTable tests", () => {
         );
 
         const expectedHeaders = ["id", "Requester email", "Professor email", "Explanation", "Date Requested", "Date Needed", "Done"];
-        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done"];
+        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "Done"];
         const testid = "RecommendationRequestTable";
 
         expectedHeaders.forEach((headerText) => {
@@ -68,7 +68,7 @@ describe("RecommendationRequestTable tests", () => {
         );
 
         const expectedHeaders = ["id", "Requester email", "Professor email", "Explanation", "Date Requested", "Date Needed", "Done"];
-        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done",];
+        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "Done",];
         const testid = "RecommendationRequestTable";
 
         expectedHeaders.forEach((headerText) => {
