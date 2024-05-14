@@ -136,7 +136,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             isInvalid={Boolean(errors.done)}
                             {...register("done", {
                                 required: true,
-                                pattern: /(true|false)/i,
+                                pattern: /^(true|false)$/i,
                             })}
                             
                         />
