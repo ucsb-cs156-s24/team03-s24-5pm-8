@@ -54,11 +54,11 @@ describe("HelpRequestCreatePage tests", () => {
 
         const queryClient = new QueryClient();
         const helpRequest = {
-            id: 17,
-            requesterEmail: "test@test.test",
-            teamId: "test",
-            tableOrBreakoutRoom: "table",
-            requestTime: "2022-02-02T00:00",
+            id: 11,
+            requesterEmail: "hannah@ucsb.edu",
+            teamId: "5pm-8",
+            tableOrBreakoutRoom: "10",
+            requestTime: "2024-02-02T00:00",
             explanation: "test",
             solved: "true"
         };
@@ -85,10 +85,10 @@ describe("HelpRequestCreatePage tests", () => {
         const solvedField = screen.getByTestId("HelpRequestForm-solved");
         const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
-        fireEvent.change(requesterEmailField, { target: { value: 'test@test.test' } });
-        fireEvent.change(teamIdField, { target: { value: 'test' } });
-        fireEvent.change(tableOrBreakoutRoomField, { target: { value: 'table' } });
-        fireEvent.change(requestTimeField, { target: { value: '2022-02-02T00:00' } });
+        fireEvent.change(requesterEmailField, { target: { value: 'hannah@ucsb.edu' } });
+        fireEvent.change(teamIdField, { target: { value: '5pm-8' } });
+        fireEvent.change(tableOrBreakoutRoomField, { target: { value: '10' } });
+        fireEvent.change(requestTimeField, { target: { value: '2024-02-02T00:00' } });
         fireEvent.change(explanationField, { target: { value: 'test' } });
         fireEvent.change(solvedField, { target: { value: true } });
 
@@ -101,15 +101,15 @@ describe("HelpRequestCreatePage tests", () => {
     
         expect(axiosMock.history.post[0].params).toEqual(
             {
-            "requesterEmail": "test@test.test",
-            "teamId": "test",
-            "tableOrBreakoutRoom": "table",
-            "requestTime": "2022-02-02T00:00",
+            "requesterEmail": "hannah@ucsb.edu",
+            "teamId": "5pm-8",
+            "tableOrBreakoutRoom": "10",
+            "requestTime": "2024-02-02T00:00",
             "explanation": "test",
             "solved": "true"
         });
 
-        expect(mockToast).toBeCalledWith("New helpRequest Created - id: 17 teamId: test");
+        expect(mockToast).toBeCalledWith("New helpRequest Created - id: 11 teamId: 5pm-8");
         expect(mockNavigate).toBeCalledWith({ "to": "/helprequest" });
     });
 
