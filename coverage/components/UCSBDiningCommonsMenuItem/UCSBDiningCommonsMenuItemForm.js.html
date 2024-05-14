@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/UCSBOrganization/UCSBOrganizationForm.js</title>
+    <title>Code coverage report for components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/UCSBOrganization</a> UCSBOrganizationForm.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/UCSBDiningCommonsMenuItem</a> UCSBDiningCommonsMenuItemForm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -168,12 +168,7 @@
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
-<a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a>
-<a name='L108'></a><a href='#L108'>108</a>
-<a name='L109'></a><a href='#L109'>109</a>
-<a name='L110'></a><a href='#L110'>110</a>
-<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,22 +179,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,8 +277,9 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 &nbsp;
-function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 &nbsp;
+    
     // Stryker disable all
     const {
         register,
@@ -301,78 +292,72 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
    
     const navigate = useNavigate();
 &nbsp;
-    const testIdPrefix = "UCSBOrganizationForm";
+    const testIdPrefix = "UCSBDiningCommonsMenuItemForm";
 &nbsp;
     return (
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
 &nbsp;
+            {initialContents &amp;&amp; (
                 &lt;Form.Group className="mb-3" &gt;
-                    &lt;Form.Label htmlFor="orgCode"&gt;orgCode&lt;/Form.Label&gt;
+                    &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
                     &lt;Form.Control
-                        data-testid={testIdPrefix + "-orgCode"}
-                        id="orgCode"
+                        data-testid={testIdPrefix + "-id"}
+                        id="id"
                         type="text"
-                        {...register("orgCode", {
-                            required: "orgCode is required."
-                        } )}
-                        isInvalid={Boolean(errors.orgCode)}
-                        value={initialContents?.orgCode}
-                        disabled={initialContents}
+                        {...register("id")}
+                        value={initialContents.id}
+                        disabled
                     /&gt;
-                    &lt;Form.Control.Feedback type="invalid"&gt;
-                        {errors.orgCode?.message}
-                    &lt;/Form.Control.Feedback&gt;
                 &lt;/Form.Group&gt;
+            )}
+&nbsp;
+            &lt;Form.Group className="mb-3" &gt;
+                &lt;Form.Label htmlFor="diningCommonsCode"&gt;Dining Commons Code&lt;/Form.Label&gt;
+                &lt;Form.Control
+                    data-testid={testIdPrefix + "-diningCommonsCode"}
+                    id="diningCommonsCode"
+                    type="text"
+                    isInvalid={Boolean(errors.diningCommonsCode)}
+                    {...register("diningCommonsCode", {
+                        required: "Dining Commons Code is required.",
+                    })}
+                /&gt;
+                &lt;Form.Control.Feedback type="invalid"&gt;
+                    {errors.diningCommonsCode?.message}
+                &lt;/Form.Control.Feedback&gt;
+            &lt;/Form.Group&gt;
+&nbsp;
+            &lt;Form.Group className="mb-3" &gt;
+                &lt;Form.Label htmlFor="name"&gt;Name&lt;/Form.Label&gt;
+                &lt;Form.Control
+                    data-testid={testIdPrefix + "-name"}
+                    id="name"
+                    type="text"
+                    isInvalid={Boolean(errors.name)}
+                    {...register("name", {
+                        required: "Name is required.",
+                    })}
+                /&gt;
+                &lt;Form.Control.Feedback type="invalid"&gt;
+                    {errors.name?.message}
+                &lt;/Form.Control.Feedback&gt;
+            &lt;/Form.Group&gt;
             
             &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="orgTranslationShort"&gt;orgTranslationShort&lt;/Form.Label&gt;
+                &lt;Form.Label htmlFor="station"&gt;Station&lt;/Form.Label&gt;
                 &lt;Form.Control
-                    data-testid={testIdPrefix + "-orgTranslationShort"}
-                    id="orgTranslationShort"
+                    data-testid={testIdPrefix + "-station"}
+                    id="station"
                     type="text"
-                    isInvalid={Boolean(errors.orgTranslationShort)}
-                    {...register("orgTranslationShort", {
-                        required: "orgTranslationShort is required.",
+                    isInvalid={Boolean(errors.station)}
+                    {...register("station", {
+                        required: "Station is required.",
                     })}
                 /&gt;
                 &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.orgTranslationShort?.message}
+                    {errors.station?.message}
                 &lt;/Form.Control.Feedback&gt;
             &lt;/Form.Group&gt;
-&nbsp;
-            &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="orgTranslation"&gt;orgTranslation&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-orgTranslation"}
-                    id="orgTranslation"
-                    type="text"
-                    isInvalid={Boolean(errors.orgTranslation)}
-                    {...register("orgTranslation", {
-                        required: "orgTranslation is required.",
-                    })}
-                /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.orgTranslation?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-&nbsp;
-            &lt;Form.Group className="mb-3"&gt;
-                &lt;Form.Label htmlFor="inactive"&gt;inactive&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-inactive"}
-                    id="inactive"
-                    type="text"
-                    isInvalid={Boolean(errors.inactive)}
-                    {...register("inactive", {
-                        required: "inactive is required.", pattern: /(true|false)/i
-                    })}
-                /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.inactive?.message &amp;&amp; 'inactive is required. '}
-                    {'Must be true or false'}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
-&nbsp;
 &nbsp;
             &lt;Button
                 type="submit"
@@ -393,7 +378,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
     )
 }
 &nbsp;
-export default UCSBOrganizationForm;</pre></td></tr></table></pre>
+export default UCSBDiningCommonsMenuItemForm;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
