@@ -84,6 +84,9 @@ describe("RecommendationRequestTable tests", () => {
         expect(screen.getByTestId(`${testid}-cell-row-0-col-id`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testid}-cell-row-1-col-id`)).toHaveTextContent("2");
 
+        const doneField = screen.getByTestId(`${testid}-cell-row-0-col-Done`);
+        expect(doneField).toHaveTextContent("false");
+
         const editButton = screen.queryByTestId(`${testid}-cell-row-0-col-Edit-button`);
         expect(editButton).toBeInTheDocument();
         expect(editButton).toHaveTextContent("Edit");
