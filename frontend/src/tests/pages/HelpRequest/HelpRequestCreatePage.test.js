@@ -60,7 +60,7 @@ describe("HelpRequestCreatePage tests", () => {
             tableOrBreakoutRoom: "table",
             requestTime: "2022-02-02T00:00",
             explanation: "test",
-            solved: true
+            solved: "true"
         };
 
         axiosMock.onPost("/api/helprequest/post").reply( 202, helpRequest );
@@ -98,7 +98,7 @@ describe("HelpRequestCreatePage tests", () => {
 
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
-        // Setting "solved" to undefined is sus
+    
         expect(axiosMock.history.post[0].params).toEqual(
             {
             "requesterEmail": "test@test.test",
