@@ -23,11 +23,11 @@ public class RecommendationRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String requesterEmail;
-    private String professorEmail;
+    private String requester_email;
+    private String professor_email;
     private String explanation;
-    private LocalDateTime dateRequested;
-    private LocalDateTime dateNeeded;
+    private LocalDateTime date_requested;
+    private LocalDateTime date_needed;
     private boolean done;
     
 }

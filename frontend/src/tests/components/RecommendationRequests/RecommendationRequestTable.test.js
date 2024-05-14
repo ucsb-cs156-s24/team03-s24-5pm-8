@@ -29,8 +29,8 @@ describe("RecommendationRequestTable tests", () => {
 
         );
 
-        const expectedHeaders = ["id", "Requester email", "Professor email", "Explnation", "Date Requested", "Date Needed", "Done"];
-        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done"];
+        const expectedHeaders = ["id", "Requester email", "Professor email", "Explanation", "Date Requested", "Date Needed", "Done"];
+        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "Done"];
         const testid = "RecommendationRequestTable";
 
         expectedHeaders.forEach((headerText) => {
@@ -66,9 +66,9 @@ describe("RecommendationRequestTable tests", () => {
             </QueryClientProvider>
 
         );
+        const expectedHeaders = ["id", "Requester email", "Professor email", "Explanation", "Date Requested", "Date Needed", "Done"];
+        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "Done",];
 
-        const expectedHeaders = ["id", "Requester email", "Professor email", "Explnation", "Date Requested", "Date Needed", "Done"];
-        const expectedFields = ["id", "requester_email", "professor_email", "explanation", "date_requested", "date_needed", "done",];
         const testid = "RecommendationRequestTable";
 
         expectedHeaders.forEach((headerText) => {
@@ -83,6 +83,9 @@ describe("RecommendationRequestTable tests", () => {
 
         expect(screen.getByTestId(`${testid}-cell-row-0-col-id`)).toHaveTextContent("1");
         expect(screen.getByTestId(`${testid}-cell-row-1-col-id`)).toHaveTextContent("2");
+
+        const doneField = screen.getByTestId(`${testid}-cell-row-0-col-Done`);
+        expect(doneField).toHaveTextContent("false");
 
         const editButton = screen.queryByTestId(`${testid}-cell-row-0-col-Edit-button`);
         expect(editButton).toBeInTheDocument();
@@ -125,5 +128,4 @@ describe("RecommendationRequestTable tests", () => {
 
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith("/recommendationrequests/edit/1"));
     });
-
 }); 
