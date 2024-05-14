@@ -40,5 +40,6 @@ describe("HelpRequestIndexPage tests", () => {
         expect(screen.getByText("Create")).toBeInTheDocument();
         expect(screen.getByText("Edit")).toBeInTheDocument();
     });
+
 });
 

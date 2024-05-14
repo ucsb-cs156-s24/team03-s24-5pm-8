@@ -55,6 +55,7 @@ export default function HelpRequestTable({ dates, currentUser }) {
         {
             Header: 'solved',
             accessor: 'solved',
+            Cell: ({ value }) => value ? 'true' : 'false',
         }
     ];
 
