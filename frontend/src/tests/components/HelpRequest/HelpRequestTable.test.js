@@ -60,6 +60,8 @@ describe("UserTable tests", () => {
     expect(screen.getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("Dokku problems");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-solved`)).toHaveTextContent("true");
 
+
+
     expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
 
     const editButton = screen.queryByTestId(`${testId}-cell-row-0-col-Edit-button`);
@@ -142,8 +144,7 @@ describe("UserTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable dates={helpRequestFixtures.threeHelpRequests
-          } currentUser={currentUser} />
+          <HelpRequestTable dates={helpRequestFixtures.threeHelpRequests} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -155,16 +156,14 @@ describe("UserTable tests", () => {
         `HelpRequestTable-cell-row-0-col-id`,
       ),
     ).toHaveTextContent("1");
-    // expect(
-    //   screen.getByTestId(`HelpRequestTable-cell-row-0-col-name`),
-    // ).toHaveTextContent("");
+
+    expect(screen.getByTestId(`HelpRequestTable-cell-row-0-col-teamId`)).toHaveTextContent("s24-5pm-8");
 
     const deleteButton = screen.getByTestId(
       `HelpRequestTable-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
 
-  
     fireEvent.click(deleteButton);
   });
 });
