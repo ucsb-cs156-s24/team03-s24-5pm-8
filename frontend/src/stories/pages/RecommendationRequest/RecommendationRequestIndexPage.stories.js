@@ -1,18 +1,17 @@
-    
 import React from 'react';
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { ucsbDatesFixtures } from "fixtures/ucsbDatesFixtures";
+import { recommendationRequestFixtures } from "fixtures/recommendationRequestFixtures";
 import { rest } from "msw";
 
-import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
+import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 
 export default {
-    title: 'pages/UCSBDates/UCSBDatesIndexPage',
-    component: UCSBDatesIndexPage
+    title: 'pages/RecommendationRequest/RecommendationRequestIndexPage',
+    component: RecommendationRequestIndexPage
 };
 
-const Template = () => <UCSBDatesIndexPage storybook={true}/>;
+const Template = () => <RecommendationRequestIndexPage storybook={true}/>;
 
 export const Empty = Template.bind({});
 Empty.parameters = {
@@ -23,7 +22,7 @@ Empty.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/ucsbdates/all', (_req, res, ctx) => {
+        rest.get('/api/recommendationrequests/all', (_req, res, ctx) => {
             return res(ctx.json([]));
         }),
     ]
@@ -39,8 +38,8 @@ ThreeItemsOrdinaryUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/ucsbdates/all', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDatesFixtures.threeDates));
+        rest.get('/api/recommendationrequests/all', (_req, res, ctx) => {
+            return res(ctx.json(recommendationRequestFixtures.threeRecommendationRequests));
         }),
     ],
 }
@@ -55,10 +54,10 @@ ThreeItemsAdminUser.parameters = {
         rest.get('/api/systemInfo', (_req, res, ctx) => {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
-        rest.get('/api/ucsbdates/all', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDatesFixtures.threeDates));
+        rest.get('/api/recommendationrequests/all', (_req, res, ctx) => {
+            return res(ctx.json(recommendationRequestFixtures.threeRecommendationRequests));
         }),
-        rest.delete('/api/ucsbdates', (req, res, ctx) => {
+        rest.delete('/api/recommendationrequests', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
