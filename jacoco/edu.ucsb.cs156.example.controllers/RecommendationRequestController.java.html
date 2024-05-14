@@ -58,24 +58,24 @@ import java.time.LocalDateTime;
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PostMapping(&quot;/post&quot;)
     public RecommendationRequest postRecommendationDate(
-            @Parameter(name = &quot;requesterEmail&quot;) @RequestParam String requesterEmail,
-            @Parameter(name = &quot;professorEmail&quot;) @RequestParam String professorEmail,
+            @Parameter(name = &quot;requester_email&quot;) @RequestParam String requester_email,
+            @Parameter(name = &quot;professor_email&quot;) @RequestParam String professor_email,
             @Parameter(name = &quot;explanation&quot;) @RequestParam String explanation,
-            @Parameter(name = &quot;dateRequested&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
-            @Parameter(name = &quot;dateNeeded&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateNeeded,
+            @Parameter(name = &quot;date_requested&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date_requested,
+            @Parameter(name = &quot;date_needed&quot;) @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date_needed,
             @Parameter(name = &quot;done&quot;) @RequestParam boolean done)  
             
             throws JsonProcessingException {
 <span class="fc" id="L69">        RecommendationRequest requestToPost = new RecommendationRequest();</span>
         
-<span class="fc" id="L71">        log.info(&quot;dateRequested:&quot;, dateRequested);</span>
-<span class="fc" id="L72">        log.info(&quot;dateNeeded:&quot;, dateNeeded);</span>
+<span class="fc" id="L71">        log.info(&quot;date_requested:&quot;, date_requested);</span>
+<span class="fc" id="L72">        log.info(&quot;date_needed:&quot;, date_needed);</span>
 
-<span class="fc" id="L74">        requestToPost.setRequesterEmail(requesterEmail);</span>
-<span class="fc" id="L75">        requestToPost.setProfessorEmail(professorEmail);</span>
+<span class="fc" id="L74">        requestToPost.setRequester_email(requester_email);</span>
+<span class="fc" id="L75">        requestToPost.setProfessor_email(professor_email);</span>
 <span class="fc" id="L76">        requestToPost.setExplanation(explanation);</span>
-<span class="fc" id="L77">        requestToPost.setDateRequested(dateRequested);</span>
-<span class="fc" id="L78">        requestToPost.setDateNeeded(dateNeeded);</span>
+<span class="fc" id="L77">        requestToPost.setDate_requested(date_requested);</span>
+<span class="fc" id="L78">        requestToPost.setDate_needed(date_needed);</span>
 <span class="fc" id="L79">        requestToPost.setDone(done);</span>
 
 
@@ -103,11 +103,11 @@ import java.time.LocalDateTime;
 <span class="fc" id="L103">        RecommendationRequest recommendationRequest = recommendationRequestRepository.findById(id)</span>
 <span class="fc" id="L104">                .orElseThrow(() -&gt; new EntityNotFoundException(RecommendationRequest.class, id));</span>
 
-<span class="fc" id="L106">        recommendationRequest.setRequesterEmail(incoming.getRequesterEmail());</span>
-<span class="fc" id="L107">        recommendationRequest.setProfessorEmail(incoming.getProfessorEmail());</span>
+<span class="fc" id="L106">        recommendationRequest.setRequester_email(incoming.getRequester_email());</span>
+<span class="fc" id="L107">        recommendationRequest.setProfessor_email(incoming.getProfessor_email());</span>
 <span class="fc" id="L108">        recommendationRequest.setExplanation(incoming.getExplanation());</span>
-<span class="fc" id="L109">        recommendationRequest.setDateRequested(incoming.getDateRequested());</span>
-<span class="fc" id="L110">        recommendationRequest.setDateNeeded(incoming.getDateNeeded());</span>
+<span class="fc" id="L109">        recommendationRequest.setDate_requested(incoming.getDate_requested());</span>
+<span class="fc" id="L110">        recommendationRequest.setDate_needed(incoming.getDate_needed());</span>
 <span class="fc" id="L111">        recommendationRequest.setDone(incoming.getDone());</span>
 
 <span class="fc" id="L113">        recommendationRequestRepository.save(recommendationRequest);</span>
