@@ -1,5 +1,5 @@
 const helpRequestFixtures = {
-    oneDate: {
+    oneHelpRequest: {
         "id": 1,
         "requesterEmail": "hannaneh@ucsb.edu",
         "teamId": "s24-5pm-8",
@@ -8,7 +8,7 @@ const helpRequestFixtures = {
         "explanation": "Need help with Swagger",
         "solved": false
     },
-    threeDates: [
+    threeHelpRequests: [
         {
             "id": 1,
             "requesterEmail": "hannaneh@ucsb.edu",

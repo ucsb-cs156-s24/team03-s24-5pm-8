@@ -136,6 +136,19 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                             <option value="true">True</option>
                             <option value="false">False</option>
                         </Form.Select>
+                            type="text"
+                            placeholder="true or false"
+                            isInvalid={Boolean(errors.done)}
+                            {...register("done", {
+                                required: true,
+                                pattern: /^(true|false)$/i,
+                            })}
+                            
+                        />
+                        <Form.Control.Feedback type="invalid">
+                            {errors.done && 'Done is required'}
+                            {errors.done?.type === 'pattern' && 'Done must be true or false.'}
+                        </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>

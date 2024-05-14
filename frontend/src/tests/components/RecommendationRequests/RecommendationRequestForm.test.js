@@ -135,4 +135,5 @@ describe('RecommendationRequestForm tests', () => {
     
             expect(mockedNavigate).toHaveBeenCalledWith(-1);
     });
+
 });
