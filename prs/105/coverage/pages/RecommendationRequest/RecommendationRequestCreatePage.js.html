@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>0/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>0/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -116,7 +116,8 @@
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,7 +125,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,28 +139,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,9 +177,9 @@ import { Navigate } from 'react-router-dom'
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
 &nbsp;
-export default function RecommendationRequestCreatePage({storybook=false}) {
+export default function <span class="fstat-no" title="function not covered" >RecommendationRequestCreatePage(</span>{storybook=<span class="branch-0 cbranch-no" title="branch not covered" >false}</span>) {
     
-    const objectToAxiosParams = (recommendationRequest) =&gt; ({
+    const objectToAxiosParams = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>ecommendationRequest) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
         url: "/api/recommendationrequests/post",
         method: "POST",
         params: {
@@ -191,28 +193,28 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
     });
 &nbsp;
 &nbsp;
-    const onSuccess = (recommendationRequest) =&gt; {
-        toast(`Recommendation Request Created - id: ${recommendationRequest.id} requesterEmail: ${recommendationRequest.requester_email} professorEmail:${recommendationRequest.professor_email} explanation: ${recommendationRequest.explanation} done: ${recommendationRequest.done}`);
+    const onSuccess = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>ecommendationRequest) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        toast(`Recommendation Request Created - id: ${recommendationRequest.id} requesterEmail: ${recommendationRequest.requester_email} professorEmail:${recommendationRequest.professor_email} explanation: ${recommendationRequest.explanation} done: ${recommendationRequest.done}`);</span>
     }
 &nbsp;
-    const mutation = useBackendMutation(
+    const mutation = <span class="cstat-no" title="statement not covered" >useBackendMutation(</span>
         objectToAxiosParams,
         { onSuccess },
         // Stryker disable next-line all : hard to set up test for caching
         ["/api/recommendationrequests/all"]
     );
 &nbsp;
-    const { isSuccess } = mutation
+    const { isSuccess } = <span class="cstat-no" title="statement not covered" >mutation</span>
 &nbsp;
-    const onSubmit = async (data) =&gt; {
-        mutation.mutate(data);
+    const onSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (data) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        mutation.mutate(data);</span>
     }
 &nbsp;
-    if (isSuccess &amp;&amp; !storybook) {
-        return &lt;Navigate to="/recommendationrequests" /&gt;
+<span class="cstat-no" title="statement not covered" >    if (isSuccess &amp;&amp; !storybook) {</span>
+<span class="cstat-no" title="statement not covered" >        return &lt;Navigate to="/recommendationrequests" /&gt;</span>
     }
 &nbsp;
-    return (
+<span class="cstat-no" title="statement not covered" >    return (</span>
         &lt;BasicLayout&gt;
             &lt;div className="pt-2"&gt;
                 &lt;h1&gt;Create New Recommendation Request&lt;/h1&gt;
@@ -222,14 +224,15 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
             &lt;/div&gt;
         &lt;/BasicLayout&gt;
     )
-}</pre></td></tr></table></pre>
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon May 13 2024 15:30:39 GMT-0700 (Pacific Daylight Time)
+                at Mon May 13 2024 22:54:55 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
