@@ -1,20 +1,20 @@
 const helpRequestFixtures = {
-    oneDate: {
+    oneHelpRequest: {
         "id": 1,
         "requesterEmail": "hannaneh@ucsb.edu",
         "teamId": "s24-5pm-8",
         "tableOrBreakoutRoom": "8",
         "requestTime": "2022-01-03T00:00:00",
         "explanation": "Need help with Swagger",
-        "solved": false
+        "solved": true
     },
-    threeDates: [
+    threeHelpRequests: [
         {
             "id": 1,
             "requesterEmail": "hannaneh@ucsb.edu",
             "teamId": "s24-5pm-8",
             "tableOrBreakoutRoom": "8",
-            "requestTime": "2022-01-02T12:00:00",
+            "requestTime": "2022-01-03T00:00:00",
             "explanation": "Need help with Swagger",
             "solved": false
         },
@@ -25,7 +25,7 @@ const helpRequestFixtures = {
             "tableOrBreakoutRoom": "10",
             "requestTime": "2023-01-03T12:00:00",
             "explanation": "Dokku problems",
-            "solved": false
+            "solved": true
         },
         {
             "id": 3,
