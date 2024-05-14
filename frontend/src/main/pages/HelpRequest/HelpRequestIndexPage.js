@@ -24,6 +24,7 @@ export default function HelpRequestIndexPage() {
     } 
   }
   
+  
   const { data: dates, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query

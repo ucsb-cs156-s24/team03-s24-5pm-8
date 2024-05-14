@@ -223,4 +223,5 @@ describe("HelpRequestEditPage tests", () => {
       );
     });
   });
+  
 });

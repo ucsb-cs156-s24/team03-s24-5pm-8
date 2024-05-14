@@ -22,6 +22,7 @@ jest.mock('react-toastify', () => {
     };
 });
 
+
 describe("HelpRequestIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
