@@ -34,7 +34,7 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
       orgTranslation: ucsbOrganization.orgTranslation,
       inactive: ucsbOrganization.inactive
     }
-  });
+  }); 
 
   const onSuccess = (ucsbOrganization) => {
     toast(`UCSBOrganization Updated - orgCode: ${ucsbOrganization.orgCode} orgTranslationShort: ${ucsbOrganization.orgTranslationShort}`);
