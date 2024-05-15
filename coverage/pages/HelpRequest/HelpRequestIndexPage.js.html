@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for pages/MenuItemReview/MenuItemReviewIndexPage.js</title>
+    <title>Code coverage report for pages/HelpRequest/HelpRequestIndexPage.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/MenuItemReview</a> MenuItemReviewIndexPage.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">pages/HelpRequest</a> HelpRequestIndexPage.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -107,12 +107,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,16 +134,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -161,49 +155,46 @@
 import { useBackend } from 'main/utils/useBackend';
 &nbsp;
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import MenuItemReviewTable from 'main/components/MenuItemReview/MenuItemReviewTable';
+import HelpRequestTable from 'main/components/HelpRequest/HelpRequestTable';
 import { Button } from 'react-bootstrap';
 import { useCurrentUser , hasRole} from 'main/utils/currentUser';
 &nbsp;
+export default function HelpRequestIndexPage() {
 &nbsp;
+  const currentUser = useCurrentUser();
 &nbsp;
-export default function MenuItemReviewIndexPage() {
-    
-    const currentUser = useCurrentUser();
-&nbsp;
-    const createButton = () =&gt; {
-        if (hasRole(currentUser, "ROLE_ADMIN")) {
-            return (
-                &lt;Button
-                    variant="primary"
-                    href="/MenuItemReview/create"
-                    style={{ float: "right" }}
-                &gt;
-                    Create MenuItemReview
-                &lt;/Button&gt;
-            )
-        } 
-    }
-&nbsp;
-    const { data: menuItemReviews, error: _error, status: _status } =
-        useBackend(
-            // Stryker disable next-line all : don't test internal caching of React Query
-            ["/api/MenuItemReview/all"],
-            { method: "GET", url: "/api/MenuItemReview/all" },
-            // Stryker disable next-line all : don't test default value of empty list
-            []
-        );
-&nbsp;
-    return (
-        &lt;BasicLayout&gt;
-            &lt;div className="pt-2"&gt;
-            {createButton()}
-            &lt;h1&gt;MenuItemReviews&lt;/h1&gt;
-            &lt;MenuItemReviewTable menuItemReviews={menuItemReviews} currentUser={currentUser} /&gt;
-            &lt;/div&gt;
-        &lt;/BasicLayout&gt;
+  const createButton = () =&gt; {
+    if (hasRole(currentUser, "ROLE_ADMIN")) {
+        return (
+            &lt;Button
+                variant="primary"
+                href="/helprequest/create"
+                style={{ float: "right" }}
+            &gt;
+                Create HelpRequest 
+            &lt;/Button&gt;
         )
+    } 
+  }
+  
+  
+  const { data: dates, error: _error, status: _status } =
+    useBackend(
+      // Stryker disable next-line all : don't test internal caching of React Query
+      ["/api/helprequest/all"],
+      { method: "GET", url: "/api/helprequest/all" },
+      []
+    );
 &nbsp;
+  return (
+    &lt;BasicLayout&gt;
+      &lt;div className="pt-2"&gt;
+        {createButton()}
+        &lt;h1&gt;HelpRequest&lt;/h1&gt;
+        &lt;HelpRequestTable dates={dates} currentUser={currentUser} /&gt;
+      &lt;/div&gt;
+    &lt;/BasicLayout&gt;
+  )
 }</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
