@@ -72,7 +72,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
             </Form.Group>
 
             <Form.Group className="mb-3">
-                <Form.Label htmlFor="inactive">inactive</Form.Label>
+                <Form.Label htmlFor="">inactive</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-inactive"}
                     id="inactive"
