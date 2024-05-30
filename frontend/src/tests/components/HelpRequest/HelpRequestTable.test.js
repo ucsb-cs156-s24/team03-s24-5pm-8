@@ -134,8 +134,6 @@ describe("UserTable tests", () => {
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/helprequest/edit/1'));
 
   });
-
-
   test("Delete button calls delete callback", async () => {
     // arrange
     const currentUser = currentUserFixtures.adminUser;
@@ -163,8 +161,6 @@ describe("UserTable tests", () => {
       `HelpRequestTable-cell-row-0-col-Delete-button`,
     );
     expect(deleteButton).toBeInTheDocument();
-
-
     fireEvent.click(deleteButton);
   });
 });
